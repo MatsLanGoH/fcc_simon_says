@@ -29,6 +29,9 @@ function lightupButtons(sequence) {
     var actionButton;
 
     // TODO: Consecutive same colors cannot be seen. Fix this.
+    // Maybe it would be better  (and simpler) to define a
+    // button animation in CSS,
+    // then toggle this animation from JS.
     function myLoop() {
         setTimeout(function () {
             if (actionButton) {
@@ -50,15 +53,9 @@ function lightupButtons(sequence) {
 }
 
 
-// Keep track of the following states
-// currentSequence length
-// strict mode on/off
-//
-//
-
 function displaySequenceText(sequence, guessed) {
-    $('#sequenceOutput').html(sequence);
-    $('#guessedOutput').html(guessed);
+    $('#sequenceOutput').html('Current sequence ' + sequence);
+    $('#guessedOutput').html('Last guess ' + guessed);
 }
 
 function checkSequence(input) {
@@ -74,6 +71,7 @@ function checkSequence(input) {
 
     if (attemptsCounter == sequence.length) {
         addStep();
+        attemptsCounter = 0;
         lightupButtons(sequence);
         displaySequenceText(sequence, input);
     }
