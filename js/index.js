@@ -35,19 +35,24 @@ function lightupButtons(sequence) {
     function myLoop() {
         setTimeout(function () {
             if (actionButton) {
-                $(actionButton).css('opacity', '');
+            //     // $(actionButton).css('opacity', '');
+            //     // $(actionButton).css('animation-play-state', 'paused');
+                $(actionButton).removeClass('lightsOn');
             }
             actionButton = '#simonActionBtn' + (sequence[index]);
-            $(actionButton).css('opacity', '1');
+            // $(actionButton).css('animation-play-state', 'running');
+            // $(actionButton).css('animation', '');
+            $(actionButton).addClass('lightsOn');
             console.log('Sequence', index, sequence[index], actionButton);
             index++;
             // TODO: I use an extra 'lap' to return opacity to standard value
             // after all values have been displayed. There's gotta be a more
             // elegant solution to this.
             if (index <= sequence.length) {
+
                 myLoop();
             }
-        }, 1000);
+        }, 900);
     }
     myLoop();
 }
@@ -90,6 +95,7 @@ function checkSequence(input) {
 
 function resetSequence() {
     sequenceCounter = 0;
+    // TODO: Remove testing sequence
     sequence = [];
     addStep();
 }
