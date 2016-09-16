@@ -4,8 +4,8 @@
 }
 
 .simonBezel {
-    height: 516px;
-    width: 516px;
+    height: 532px;
+    width: 532px;
     border-radius: 50%;
     margin-left: auto;
     margin-right: auto;
@@ -19,14 +19,14 @@
     border-radius: 50%;
     background-color: #333;
     position: absolute;
-    margin: 4px 0 0 4px;
+    margin: 12px 0 0 12px;
 }
 
 .simonActionBtn {
-    height: 250px;
-    width: 250px;
+    height: 242px;
+    width: 242px;
     opacity: 0.7;
-    border-width: 2px;
+    border-width: 6px;
     border-color: #444;
     border-style: solid;
 }
@@ -63,7 +63,7 @@
 #simonActionBtn1 {
     border-radius: 100% 0 0 0;
     /*background-color: #0d0;*/
-    background-color: #0f0;
+    background-color: #13ff7c;
 }
 
 #simonActionBtn2 {
@@ -72,7 +72,7 @@
     margin-left: 254px;
     margin-top: -254px;
     /*background-color: #d00;*/
-    background-color: #f00;
+    background-color: #fc0102;
 }
 
 #simonActionBtn3 {
@@ -81,7 +81,7 @@
     /*margin-top: 50%;*/
     border-radius: 0 0 0 100%;
     /*background-color: #00d;*/
-    background-color: #79f;
+    background-color: #fed93f;
 }
 
 #simonActionBtn4 {
@@ -90,12 +90,12 @@
     margin-left: 254px;
     margin-top: -254px;
     /*background-color: #dd0;*/
-    background-color: #ff0;
+    background-color: #1c8cff;
 }
 
 .simonInnerBezel {
-    height: 270px;
-    width: 270px;
+    height: 274px;
+    width: 274px;
     top: -390px;
     left: 105px ;
     border-radius: 50%;
@@ -108,32 +108,34 @@
 }
 
 .simonSettingFrame {
-    height: 260px;
-    width: 260px;
+    height: 252px;
+    width: 252px;
     border-radius: 50%;
     position: absolute;
     top: 50%;
     left: 50%;
-    margin: -130px 0 0 -130px;
+    margin: -126px 0 0 -126px;
     /*margin-left: auto;*/
     /*margin-right: auto;*/
     background-color: #ccc;
 }
 
 #simonControls {
-    margin-top: 33%;
-    /*text-align: center;*/
+    margin-top: 30%;
+/*     margin-left: 6%; */
+/*     width: 80%; */
+    position: relative;
+    text-align: center;
 }
 
 ul {
     list-style-type: none;
-    /*display: inline;*/
+    display: flex;
+    margin: 30px 10px;
 }
 
 li {
-    float: left;
-    /*width: 33%;*/
-    /*text-align: center;*/
+    width: 33%;
 }
 
 .simonSettingSwitch {
