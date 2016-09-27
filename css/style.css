@@ -1,3 +1,8 @@
+body {
+    background-image: url("/img/purty_wood.png");
+    background-repeat: repeat;
+}
+
 .mainContent {
     margin: auto;
     width: 100%;
@@ -31,6 +36,7 @@
     border-width: 6px;
     border-color: #444;
     border-style: solid;
+    cursor: pointer;
 }
 
 .lightsOn {
@@ -52,7 +58,7 @@
 .simonActionBtn:hover {
     /*opacity: 1;*/
     /*animation: lighting 1s;*/
-    animation: lightup 1.5s infinite;
+    animation: lightup 1s infinite;
 }
 
 @keyframes lightup {
@@ -123,7 +129,7 @@
 }
 
 #simonControls {
-    margin-top: 30%;
+    margin-top: 25%;
 /*     margin-left: 6%; */
 /*     width: 80%; */
     position: relative;
@@ -148,6 +154,16 @@ li {
 }
 
 
+.settingLabel {
+    font-size: 0.9em;
+    height: 15px;
+    padding: 10px;
+    margin: -14px 0px 0px -10px;
+    padding: 2px;
+/*     position: fixed */
+    text-align: left;
+}
+
 .simonSettingSwitch {
     display: block;
     text-align: center;
@@ -156,18 +172,10 @@ li {
     padding: 10px;
     border: 3px solid #222;
     border-radius: 50%;
-    box-shadow: 0px 4px 3px #888888;
+    box-shadow: 0px 4px 3px #888;
 
 }
 
-.settingLabel {
-    font-size: 0.9em;
-    height: 15px;
-    padding: 10px;
-    margin: -14px 0px 0px -10px;
-    padding: 2px;
-    position: fixed
-}
 
 
 #repeatSwitch {
@@ -179,8 +187,20 @@ li {
 
 #startButton {
     background-color: #f00;
+    cursor: pointer;
+}
+
+#startButton:active {
+    box-shadow: 0px 0px 0px #333;
+    transform: translateY(2px);
 }
 
 #strictSwitch {
     background-color: #f90;
+    cursor: pointer;
+}
+
+#strictSwitch:active {
+    box-shadow: 0px 0px 0px #333;
+    transform: translateY(2px);
 }

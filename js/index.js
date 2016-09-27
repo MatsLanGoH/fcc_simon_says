@@ -1,23 +1,40 @@
 var sequenceCounter = 0;
 var attemptsCounter = 0;
 var sequence = [];
+var strict = false;
+var gameActive = true;
 
 $(document).ready(function($) {
     // TODO: Remove this stuff
     var testSequence = [1, 2, 3, 1];
 
-
-    resetSequence();
-
-    lightupButtons(sequence);
-    displaySequenceText(sequence);
+    initializeGame();
 
     $('.simonActionBtn').click(function(event) {
-        /* Act on the event */
-        var buttonId = $(this).attr('id');
-        var input = parseInt(buttonId[buttonId.length - 1]);
-        checkSequence(input);
+        if (gameActive) {
+            /* Act on the event */
+            var buttonId = $(this).attr('id');
+            var input = parseInt(buttonId[buttonId.length - 1]);
+            checkSequence(input);
+        }
     });
+
+    $('#startButton').click(function(event) {
+        /* Act on the event */
+        gameActive = true;
+        startGame();
+    });
+
+    $('#strictSwitch').click(function(event) {
+        /* Act on the event */
+        toggleStrict();
+    });
+
+    $('#powerToggle').click(function(event) {
+        /* Act on the event */
+        console.log('Log: Pushed Power Button.');
+    });
+
 });
 
 
@@ -60,18 +77,34 @@ function lightupButtons(sequence) {
 
 function displaySequenceText(sequence, guessed) {
     $('#sequenceOutput').html('Current sequence ' + sequence);
-    $('#guessedOutput').html('Last guess ' + guessed);
+    if (guessed) {
+        $('#guessedOutput').append(' ' + guessed);
+    }
+
+    $('#repeatSwitch').html(sequence.length);
+
+    // TODO: Separate responsibilities.
+    // Should display function check for win condition?
+    if (sequence.length > 20) {
+        $('#gameMessage').html('You won!');
+        gameActive = false;
+    }
 }
 
 function checkSequence(input) {
     // Remember, it's a sequence, not just a single number!
     if (input == sequence[attemptsCounter]) {
-        console.log('Good guess!');
+        $('#gameMessage').html(input + '? ' + 'Good guess!');
         attemptsCounter++;
 
     } else {
-        console.log('Try again!');
+        $('#gameMessage').html('Wrong guess! Try again!');
         attemptsCounter = 0;
+
+        if (strict) {
+            console.log('Too bad! Strict game!');
+            initializeGame();
+        }
     }
 
     if (attemptsCounter == sequence.length) {
@@ -109,4 +142,28 @@ function getRandomIntInclusive(min, max) {
     min = Math.ceil(min);
     max = Math.ceil(max);
     return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+
+
+function initializeGame() {
+    resetSequence();
+
+    lightupButtons(sequence);
+    displaySequenceText(sequence);
+}
+
+function startGame() {
+    // body...
+    initializeGame();
+}
+
+
+function toggleStrict() {
+    if (strict) {
+        strict = false;
+    } else {
+        strict = true;
+    }
+    console.log('Log: Toggled Switch Button.', strict);
 }
