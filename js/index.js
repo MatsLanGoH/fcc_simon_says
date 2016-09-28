@@ -1,8 +1,15 @@
+// TODO: Clean up console.log entries.
+// TODO: DRY your code.
+
 var sequenceCounter = 0;
 var attemptsCounter = 0;
 var sequence = [];
 var strict = false;
 var gameActive = true;
+
+// Button Sound playback
+var baseUrl = "https://s3.amazonaws.com/freecodecamp/simonSound";
+var audio = ['1.mp3', '2.mp3', '3.mp3', '4.mp3'];
 
 $(document).ready(function($) {
     // TODO: Remove this stuff
@@ -15,6 +22,7 @@ $(document).ready(function($) {
             /* Act on the event */
             var buttonId = $(this).attr('id');
             var input = parseInt(buttonId[buttonId.length - 1]);
+            playSound(input);
             checkSequence(input);
         }
     });
@@ -61,6 +69,7 @@ function lightupButtons(sequence) {
             // $(actionButton).css('animation', '');
             $(actionButton).addClass('lightsOn');
             console.log('Sequence', index, sequence[index], actionButton);
+            playSound(sequence[index]);
             index++;
             // TODO: I use an extra 'lap' to return opacity to standard value
             // after all values have been displayed. There's gotta be a more
@@ -72,6 +81,14 @@ function lightupButtons(sequence) {
         }, 900);
     }
     myLoop();
+}
+
+
+function playSound(num) {
+    if (num) {
+        // console.log('Playing sound, https://s3.amazonaws.com/freecodecamp/simonSound' + num + '.mp3');
+        new Audio(baseUrl + audio[num - 1]).play();
+    }
 }
 
 
